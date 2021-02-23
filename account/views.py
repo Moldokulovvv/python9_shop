@@ -15,7 +15,7 @@ class RegistrationView(CreateView):
     model = User
     form_class = RegistrationForm
     template_name = 'account/registration.html'
-    success_url = reverse_lazy('succesful-registration')
+    success_url = reverse_lazy('successful-registration')
 
 class SuccessfulRegistrationView(View):
     def get(self, request):
@@ -31,11 +31,11 @@ class ActivationVIew(View):
         user.is_active = True
         user.activation_code = ''
         user.save()
-        return render(request, 'account/activation/html', {})
+        return render(request, 'account/activation.html', {})
 
 
 class SigninView(LoginView):
-    template_name = ''
+    template_name = 'account/login.html'
     success_url = reverse_lazy('index-page')
 
 
